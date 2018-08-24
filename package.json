@@ -1,0 +1,34 @@
+{
+  "name": "react-app",
+  "version": "1.0.0",
+  "description": "My react app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack-dev-server --open --mode development",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mr00z/react-app.git"
+  },
+  "author": "mr00z",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mr00z/react-app/issues"
+  },
+  "homepage": "https://github.com/mr00z/react-app#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "webpack": "^4.17.1",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
