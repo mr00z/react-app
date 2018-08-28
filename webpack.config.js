@@ -5,17 +5,18 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                use: ['babel-loader']
+            }, 
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                use: {
-                  loader: "babel-loader"
-                }
+                use: ['babel-loader', 'eslint-loader']
             },
             {
                 test: /\.html$/,
-                use: {
-                    loader: "html-loader"
-                }
+                use: ['html-loader']
             },
             {
                 test: /\.scss$/,
