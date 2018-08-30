@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import headphones from '../assests/music.png';
 
 const App = (props) => {
     return (
-        <h2>
-            {props.text}
-        </h2>
+        <div>
+            <h2>
+                {props.text}
+            </h2>
+            <img src={headphones}/>
+        </div>
     )
 }
 
