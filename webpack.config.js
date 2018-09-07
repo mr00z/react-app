@@ -1,16 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 
 module.exports = {
     module: {
-        entry: "./index.js",
-        output: {
-            filename: 'bundle.js',
-            path: path.resolve(__dirname, 'public')
-        },
-        context: path.resolve(__dirname, 'src'),
         rules: [
             {
                 test: /\.(js|jsx)$/,
@@ -50,8 +43,7 @@ module.exports = {
             template: "./public/index.html",
             filename: "./index.html"
         }),
-        new ExtractTextPlugin('style.css'),
-        new CleanWebpackPlugin(['public'])
+        new ExtractTextPlugin('style.css')
     ],
     devServer: {
         contentBase: path.resolve(__dirname, 'public/assets'),
