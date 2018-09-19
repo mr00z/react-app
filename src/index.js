@@ -4,6 +4,6 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import './style.scss';
 
-ReactDOM.render(<App text={'Hello, React!'}/>, document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById('root'));
 
 /*eslint-enable prop-types*/

@@ -1,20 +1,17 @@
+/*eslint-disable prop-types*/
 import React from 'react';
-import PropTypes from 'prop-types';
-import headphones from '../assests/music.png';
+import Container from './bulma/Container';
+import Header from './presentional/Header';
 
-const App = (props) => {
+const App = () => {
     return (
-        <div>
-            <h2>
-                {props.text}
-            </h2>
-            <img src={headphones}/>
-        </div>
+        <Container>
+            <Header/>
+        </Container>
     )
 }
 
-App.propTypes = {
-    text: PropTypes.string
-};
 
 export default App;
+
+/*eslint-enable prop-types*/
