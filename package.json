@@ -1,7 +1,7 @@
 {
-  "name": "react-app",
+  "name": "music-jinn",
   "version": "1.0.0",
-  "description": "My react app",
+  "description": "Music jinn app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mr00z/react-app.git"
+    "url": "git+https://github.com/mr00z/music-jinn.git"
   },
   "author": "mr00z",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mr00z/react-app/issues"
+    "url": "https://github.com/mr00z/music-jinn/issues"
   },
-  "homepage": "https://github.com/mr00z/react-app#readme",
+  "homepage": "https://github.com/mr00z/music-jinn#readme",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-eslint": "^9.0.0",
