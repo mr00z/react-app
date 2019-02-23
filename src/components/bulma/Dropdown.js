@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Dropdown = ({options}) =>(
-    <div className="is-flex" style={{justifyContent: 'center'}}>
+const Dropdown = ({options, onChange}) =>(
+    <div className="is-flex dropdown">
         <div className="control">
             <div className="select">
-                <select>
+                <select onChange={onChange}>
                 {options.map((value, index) => 
                     <option key={index}>{value}</option>
                 )}
@@ -18,5 +18,6 @@ const Dropdown = ({options}) =>(
 export default Dropdown;
 
 Dropdown.propTypes = {
-    options: PropTypes.arrayOf(PropTypes.string)
+    options: PropTypes.arrayOf(PropTypes.string),
+    onChange: PropTypes.func
 }
