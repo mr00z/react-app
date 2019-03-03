@@ -1,19 +1,21 @@
 {
-    "parser": "babel-eslint",
-    "plugins": [
-      "react"
-    ],
-    "rules": {
-      "max-len": [1, 120, 2, {"ignoreComments": true}],
-      "react/prop-types": [1]
-    },
-    "overrides": [
-      {
-        "files": ["webpack.config.js", "index.js"],
-        "rules": {
-          "no-undef": "off"
-        }
+  "parser": "babel-eslint",
+  "plugins": ["react"],
+  "rules": {
+    "max-len": [1, 120, 2, { "ignoreComments": true }],
+    "react/prop-types": [1]
+  },
+  "overrides": [
+    {
+      "files": ["webpack.config.js", "index.js"],
+      "rules": {
+        "no-undef": "off"
       }
-    ],
-    "extends": ["eslint:recommended", "plugin:react/recommended"]
+    }
+  ],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "globals": {
+    "fetch": false,
+    "process": false
+  }
 }
