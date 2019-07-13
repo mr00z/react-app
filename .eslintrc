@@ -3,7 +3,8 @@
   "plugins": ["react"],
   "rules": {
     "max-len": [1, 120, 2, { "ignoreComments": true }],
-    "react/prop-types": [1]
+    "react/prop-types": "warn",
+    "no-console": "warn"
   },
   "overrides": [
     {
@@ -17,5 +18,8 @@
   "globals": {
     "fetch": false,
     "process": false
+  },
+  "env": {
+    "browser": true
   }
 }
