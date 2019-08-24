@@ -1,9 +1,9 @@
 /*eslint-disable prop-types*/
 import React, { useState } from "react";
 import Container from "../bulma/Container";
-import Header from "../presentional/Header";
-import SongForm from "../presentional/SongForm";
-import Song from "../presentional/Song";
+import Header from "../presentational/Header";
+import SongForm from "../presentational/SongForm";
+import Song from "../presentational/Song";
 
 const App = () => {
   const [songReady, setSongReady] = useState(false);
