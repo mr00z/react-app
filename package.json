@@ -28,26 +28,26 @@
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.1",
     "dotenv": "^6.2.0",
-    "eslint": "^5.14.1",
-    "eslint-loader": "^2.1.2",
-    "eslint-plugin-react": "^7.12.4",
+    "eslint": "^5.16.0",
+    "eslint-loader": "^2.2.1",
+    "eslint-plugin-react": "^7.14.3",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^2.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.3.1",
     "style-loader": "^0.22.1",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3",
-    "webpack-dev-server": "^3.2.1"
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
   },
   "dependencies": {
-    "bulma": "^0.7.4",
+    "bulma": "^0.7.5",
     "prop-types": "^15.7.2",
-    "react": "^16.8.3",
-    "react-dom": "^16.8.3",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "react-redux": "^5.1.1",
-    "redux": "^4.0.1"
+    "redux": "^4.0.4"
   }
 }
