@@ -1,8 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Song = ({ name, author, hasSong }) => (
-  <div className="has-text-centered grayText">
+const SongFormResult = ({ name, author, hasSong }) => (
+  <div className="has-text-centered has-text-grey-lighter">
     {hasSong ? (
       <React.Fragment>
         Your song is: <br />
@@ -14,10 +14,10 @@ const Song = ({ name, author, hasSong }) => (
   </div>
 );
 
-Song.propTypes = {
+SongFormResult.propTypes = {
   name: PropTypes.string,
   author: PropTypes.string,
   hasSong: PropTypes.bool
 };
 
-export default Song;
+export default SongFormResult;

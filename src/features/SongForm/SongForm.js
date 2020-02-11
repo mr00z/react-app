@@ -1,11 +1,13 @@
-/*eslint-disable prop-types*/
 import React, { useState } from "react";
-import Container from "../bulma/Container";
-import Header from "../presentational/Header";
-import SongForm from "../presentational/SongForm";
-import Song from "../presentational/Song";
+import FormField from "../../components/Form/FormField";
+import Dropdown from "../../components/bulma/Dropdown";
+import SubmitButton from "../../components/Form/SubmitButton";
+import Form from "../../components/Form/Form";
+import SongFormResult from "./SongFormResult";
 
-const App = () => {
+const moods = ["Sad", "Happy", "Lazy", "Nervous"];
+
+const SongForm = () => {
   const [songReady, setSongReady] = useState(false);
   const [songName, setSongName] = useState("");
   const [songAuthor, setSongAuthor] = useState("");
@@ -42,17 +44,26 @@ const App = () => {
     });
   };
   return (
-    <Container>
-      <Header />
-      <SongForm onSubmit={handleSongFormSubmit} />
+    <React.Fragment>
+      <Form onSubmit={handleSongFormSubmit}>
+        <FormField label="How do you feel?">
+          <Dropdown options={moods} />
+        </FormField>
+        <FormField label="Do you want to stay in this mood?">
+          <Dropdown options={["Yes", "No"]} />
+        </FormField>
+        <FormField>
+          <SubmitButton />
+        </FormField>
+      </Form>
       <br />
       {songReady && (
-        <Song name={songName} author={songAuthor} hasSong={hasSong} />
+        <SongFormResult name={songName} author={songAuthor} hasSong={hasSong} />
       )}
-    </Container>
+    </React.Fragment>
   );
 };
 
-export default App;
+SongForm.propTypes = {};
 
-/*eslint-enable prop-types*/
+export default SongForm;
