@@ -44,7 +44,7 @@ const SongForm = () => {
     });
   };
   return (
-    <React.Fragment>
+    <>
       <Form onSubmit={handleSongFormSubmit}>
         <FormField label="How do you feel?">
           <Dropdown options={moods} />
@@ -60,7 +60,7 @@ const SongForm = () => {
       {songReady && (
         <SongFormResult name={songName} author={songAuthor} hasSong={hasSong} />
       )}
-    </React.Fragment>
+    </>
   );
 };
 
