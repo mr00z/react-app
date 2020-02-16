@@ -6,14 +6,15 @@ import Form from "../../../components/Form/Form";
 import SongFormResult from "./SongFormResult";
 import SongsQuery from "../SongsQuery";
 import MusicJinnAPIConnector from "../../../integrations/MusicJinnAPIConnector";
-
-const moods = ["Sad", "Happy", "Lazy", "Nervous"];
+import useSongsMoods from "./useSongsMoods";
 
 const SongForm = () => {
   const [songReady, setSongReady] = useState(false);
   const [songName, setSongName] = useState("");
   const [songAuthor, setSongAuthor] = useState("");
   const [hasSong, setHasSong] = useState(false);
+
+  const moods = useSongsMoods();
 
   const handleSongFormSubmit = async e => {
     e.preventDefault();
