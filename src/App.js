@@ -1,7 +1,7 @@
 import React from "react";
 import Container from "./components/bulma/Container";
 import Header from "./components/Header/Header";
-import SongForm from "./features/SongForm/SongForm";
+import SongForm from "./features/SongForm/components/SongForm";
 
 const App = () => {
   return (

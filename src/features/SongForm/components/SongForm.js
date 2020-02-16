@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import FormField from "../../components/Form/FormField";
-import Dropdown from "../../components/bulma/Dropdown";
-import SubmitButton from "../../components/Form/SubmitButton";
-import Form from "../../components/Form/Form";
+import FormField from "../../../components/Form/FormField";
+import Dropdown from "../../../components/bulma/Dropdown";
+import SubmitButton from "../../../components/Form/SubmitButton";
+import Form from "../../../components/Form/Form";
 import SongFormResult from "./SongFormResult";
+import SongsQuery from "../SongsQuery";
+import MusicJinnAPIConnector from "../../../integrations/MusicJinnAPIConnector";
 
 const moods = ["Sad", "Happy", "Lazy", "Nervous"];
 
@@ -13,7 +15,7 @@ const SongForm = () => {
   const [songAuthor, setSongAuthor] = useState("");
   const [hasSong, setHasSong] = useState(false);
 
-  const handleSongFormSubmit = e => {
+  const handleSongFormSubmit = async e => {
     e.preventDefault();
 
     const mood = e.target[0].value;
@@ -22,26 +24,23 @@ const SongForm = () => {
     if (wantToStay == "Yes") wantToStay = true;
     else wantToStay = false;
 
-    fetch(
-      process.env.API_URL + "/songs?mood=" + mood + "&wantToStay=" + wantToStay,
-      {}
-    ).then(value => {
-      value.json().then(json => {
-        if (json.length > 0) {
-          const max = json.length;
-          const number = Math.floor(Math.random() * (+max - +0)) + +0;
-          setSongReady(true);
-          setSongName(json[number].name);
-          setSongAuthor(json[number].author);
-          setHasSong(true);
-        } else {
-          setSongReady(true);
-          setSongName("");
-          setSongAuthor("");
-          setHasSong(false);
-        }
-      });
-    });
+    const getSongs = new SongsQuery(mood, wantToStay);
+
+    const response = await MusicJinnAPIConnector.get(getSongs.getQueryString());
+
+    if (response.length > 0) {
+      const max = response.length;
+      const number = Math.floor(Math.random() * (+max - +0)) + +0;
+      setSongReady(true);
+      setSongName(response[number].name);
+      setSongAuthor(response[number].author);
+      setHasSong(true);
+    } else {
+      setSongReady(true);
+      setSongName("");
+      setSongAuthor("");
+      setHasSong(false);
+    }
   };
   return (
     <>
