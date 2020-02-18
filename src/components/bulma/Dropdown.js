@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./bulma.scss";
 
-const Dropdown = ({ options, onChange }) => (
+const Dropdown = ({ name, options, onChange }) => (
   <div className="is-flex dropdown">
     <div className="control">
       <div className="select">
-        <select onChange={onChange}>
+        <select onChange={onChange} name={name}>
           {options.map((value, index) => (
             <option key={index}>{value}</option>
           ))}
@@ -19,6 +19,7 @@ const Dropdown = ({ options, onChange }) => (
 export default Dropdown;
 
 Dropdown.propTypes = {
+  name: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.string),
   onChange: PropTypes.func
 };
