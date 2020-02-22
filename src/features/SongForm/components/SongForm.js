@@ -14,6 +14,7 @@ const SongForm = () => {
   const [songReady, setSongReady] = useState(false);
   const [songName, setSongName] = useState("");
   const [songAuthor, setSongAuthor] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const moods = useSongsMoods();
 
@@ -42,6 +43,7 @@ const SongForm = () => {
 
   const handleSongFormSubmit = async e => {
     e.preventDefault();
+    setIsLoading(true);
 
     const { wantToStay, mood } = formState;
     const getSongs = new SongsQuery(mood, wantToStay);
@@ -57,6 +59,7 @@ const SongForm = () => {
       setSongName("");
       setSongAuthor("");
     }
+    setIsLoading(false);
     setSongReady(true);
   };
   return (
@@ -81,7 +84,7 @@ const SongForm = () => {
           </Control>
         </FormField>
         <FormField>
-          <SubmitButton />
+          <SubmitButton isLoading={isLoading} />
         </FormField>
       </Form>
       <br />
