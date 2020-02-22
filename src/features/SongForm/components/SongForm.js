@@ -84,7 +84,7 @@ const SongForm = () => {
           </Control>
         </FormField>
         <FormField>
-          <SubmitButton isLoading={isLoading} />
+          <SubmitButton isLoading={isLoading}>Give me the song!</SubmitButton>
         </FormField>
       </Form>
       <br />

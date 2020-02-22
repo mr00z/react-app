@@ -1,13 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SubmitButton = ({ onClick, isLoading }) => (
+const SubmitButton = ({ onClick, isLoading, children }) => (
   <button
     type="submit"
-    className={`button text-center ${isLoading ? "is-loading" : ""}`}
+    className={`button text-center ${isLoading ? "is-loading" : undefined}`}
     onClick={onClick}
   >
-    Submit
+    {children}
   </button>
 );
 
@@ -15,5 +15,6 @@ export default SubmitButton;
 
 SubmitButton.propTypes = {
   onClick: PropTypes.func,
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool,
+  children: PropTypes.node
 };
