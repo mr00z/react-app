@@ -34,6 +34,7 @@
     "dotenv": "^6.2.0",
     "eslint": "^5.16.0",
     "eslint-loader": "^2.2.1",
+    "eslint-plugin-jest": "^23.8.2",
     "eslint-plugin-react": "^7.18.3",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^2.0.0",
