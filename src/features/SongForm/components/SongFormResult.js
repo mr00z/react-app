@@ -9,7 +9,7 @@ const SongFormResult = ({ name, author, hasSong }) => (
         {name} by {author}
       </>
     ) : (
-      <>No songs matching your criteria </>
+      <>No songs matching your criteria</>
     )}
   </div>
 );
