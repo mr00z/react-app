@@ -24,6 +24,7 @@
     "process": false
   },
   "env": {
-    "browser": true
+    "browser": true,
+    "jest/globals": true
   }
 }
