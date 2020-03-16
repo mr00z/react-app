@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
-import FormField from "../../../components/Form/FormField";
-import Dropdown from "../../../components/bulma/Dropdown";
-import SubmitButton from "../../../components/Form/SubmitButton";
-import Form from "../../../components/Form/Form";
-import SongFormResult from "./SongFormResult";
-import SongsQuery from "../SongsQuery";
-import MusicJinnAPIConnector from "../../../integrations/MusicJinnAPIConnector";
-import useSongsMoods from "./useSongsMoods";
-import RadioButton from "../../../components/Form/RadioButton";
-import Control from "../../../components/bulma/Control";
+import React, { useState, useEffect } from 'react';
+import FormField from '../../../components/Form/FormField';
+import Dropdown from '../../../components/bulma/Dropdown';
+import SubmitButton from '../../../components/Form/SubmitButton';
+import Form from '../../../components/Form/Form';
+import SongFormResult from './SongFormResult';
+import SongsQuery from '../SongsQuery';
+import MusicJinnAPIConnector from '../../../integrations/MusicJinnAPIConnector';
+import useSongsMoods from './useSongsMoods';
+import RadioButton from '../../../components/Form/RadioButton';
+import Control from '../../../components/bulma/Control';
 
 const SongForm = () => {
   const [songReady, setSongReady] = useState(false);
-  const [songName, setSongName] = useState("");
-  const [songAuthor, setSongAuthor] = useState("");
+  const [songName, setSongName] = useState('');
+  const [songAuthor, setSongAuthor] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const moods = useSongsMoods();
@@ -30,7 +30,7 @@ const SongForm = () => {
   const handleInputChange = event => {
     const target = event.target;
     const value =
-      target.type === "checkbox" || target.type === "radio"
+      target.type === 'checkbox' || target.type === 'radio'
         ? target.checked
         : target.value;
     const name = target.name;
@@ -56,8 +56,8 @@ const SongForm = () => {
       setSongName(response[number].name);
       setSongAuthor(response[number].author);
     } else {
-      setSongName("");
-      setSongAuthor("");
+      setSongName('');
+      setSongAuthor('');
     }
     setIsLoading(false);
     setSongReady(true);
@@ -88,13 +88,7 @@ const SongForm = () => {
         </FormField>
       </Form>
       <br />
-      {songReady && (
-        <SongFormResult
-          name={songName}
-          author={songAuthor}
-          hasSong={songReady}
-        />
-      )}
+      {songReady && <SongFormResult name={songName} author={songAuthor} />}
     </>
   );
 };
