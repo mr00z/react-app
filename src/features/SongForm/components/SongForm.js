@@ -4,7 +4,7 @@ import Dropdown from '../../../components/bulma/Dropdown';
 import SubmitButton from '../../../components/Form/SubmitButton';
 import Form from '../../../components/Form/Form';
 import SongFormResult from './SongFormResult';
-import SongsQuery from '../SongsQuery';
+import ByMoodJinnQuery from '../ByMoodJinnQuery';
 import MusicJinnAPIConnector from '../../../integrations/MusicJinnAPIConnector';
 import useSongsMoods from './useSongsMoods';
 import RadioButton from '../../../components/Form/RadioButton';
@@ -46,7 +46,7 @@ const SongForm = () => {
     setIsLoading(true);
 
     const { wantToStay, mood } = formState;
-    const getSongs = new SongsQuery(mood, wantToStay);
+    const getSongs = new ByMoodJinnQuery(mood, wantToStay);
 
     const response = await MusicJinnAPIConnector.get(getSongs.getQueryString());
 
