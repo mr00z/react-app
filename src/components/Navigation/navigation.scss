@@ -1,0 +1,17 @@
+.navigation__icon_container {
+  padding: 15px;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: inline-block;
+}
+
+.navigation__navbar_active {
+  width: 350px;
+  min-height: 100vh;
+  z-index: 10;
+  background-color: red;
+}

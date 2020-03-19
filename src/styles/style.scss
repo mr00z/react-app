@@ -1,9 +1,13 @@
-@import "../../node_modules/bulma";
+@import '../../node_modules/bulma';
 
 $main: #1d6b76;
 $text: #b6dde3;
 
 html {
   background-color: $main;
-  font-family: "Muli", sans-serif;
+  font-family: 'Muli', sans-serif;
+}
+
+body {
+  color: $text;
 }
