@@ -1,13 +1,21 @@
+@charset "utf-8";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Muli:400,700');
+@import './variables.scss';
+
+// Update Bulma's global variables
+$family-sans-serif: 'Muli', sans-serif;
+$primary: $jinn_primary;
+$link: $jinn_secondary;
+
+// Update some of Bulma's component variables
+$body-background-color: $jinn_bg;
+$body-color: #fff;
+
+//menu
+$menu-item-color: #fff;
+$menu-label-color: $jinn_lightest;
+
+// Import only what you need from Bulma
 @import '../../node_modules/bulma';
-
-$main: #1d6b76;
-$text: #b6dde3;
-
-html {
-  background-color: $main;
-  font-family: 'Muli', sans-serif;
-}
-
-body {
-  color: $text;
-}

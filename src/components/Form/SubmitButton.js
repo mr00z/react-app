@@ -1,10 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const SubmitButton = ({ onClick, isLoading, children }) => (
   <button
     type="submit"
-    className={`button text-center ${isLoading ? "is-loading" : undefined}`}
+    className={`button text-center is-link ${
+      isLoading ? 'is-loading' : undefined
+    }`}
     onClick={onClick}
   >
     {children}
