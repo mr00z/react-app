@@ -4,6 +4,7 @@ import styles from './navigation.scss';
 import Menu from '../bulma/Menu';
 import HamburgerButton from './HamburgerButton';
 import Icon from '../Icon/Icon';
+import logo from '../../assets/logo.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(null);
@@ -23,10 +24,11 @@ const Navbar = () => {
         />
         <div
           className={clsx(styles.navigation__navbar_active, {
-            'slide-in': isOpen,
-            'slide-out': !isOpen
+            'slide-in': isOpen === true,
+            'slide-out': isOpen === false
           })}
         >
+          <img src={logo} alt="Logo" />
           <Menu>
             <Menu.List>
               <Menu.ListItem
