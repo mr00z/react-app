@@ -1,8 +1,8 @@
 import React from 'react';
-// import Container from './components/bulma/Container';
 import Header from './components/Header/Header';
 import SongForm from './features/SongForm/components/SongForm';
 import Navbar from './components/Navigation/Navbar';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   return (
@@ -10,6 +10,7 @@ const App = () => {
       <Navbar />
       <Header />
       <SongForm />
+      <Footer />
     </>
   );
 };

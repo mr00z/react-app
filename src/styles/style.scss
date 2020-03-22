@@ -14,9 +14,12 @@ $link: $jinn_secondary;
 $body-background-color: $jinn_bg;
 $body-color: #fff;
 
-//menu
+// menu
 $menu-item-color: #fff;
 $menu-label-color: $jinn_lightest;
+
+// footer
+$footer-background-color: $jinn_bg;
 
 // Import only what you need from Bulma
 @import '../../node_modules/bulma';
