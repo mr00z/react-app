@@ -4,7 +4,7 @@ import styles from './footer.scss';
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="content has-text-centered">
+      <div className="content">
         <p>
           <a href="https://bulma.io" className={styles.footer__img}>
             <img
