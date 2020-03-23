@@ -29,10 +29,7 @@ const SongForm = () => {
 
   const handleInputChange = event => {
     const target = event.target;
-    const value =
-      target.type === 'checkbox' || target.type === 'radio'
-        ? target.checked
-        : target.value;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
     setFormState({
@@ -73,12 +70,15 @@ const SongForm = () => {
             <RadioButton
               label="Yes"
               name="wantToStay"
-              checked
+              defaultChecked={formState.wantToStay}
+              value={true}
               onChange={handleInputChange}
             />
             <RadioButton
               label="No"
               name="wantToStay"
+              defaultChecked={!formState.wantToStay}
+              value={false}
               onChange={handleInputChange}
             />
           </Control>

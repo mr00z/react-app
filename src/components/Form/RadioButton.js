@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const RadioButton = ({ name, label, value, checked, onChange }) => {
+const RadioButton = ({ name, label, value, onChange, defaultChecked }) => {
   return (
     <>
       <label className="radio">
@@ -9,8 +9,8 @@ const RadioButton = ({ name, label, value, checked, onChange }) => {
           type="radio"
           name={name}
           value={value}
-          checked={checked}
           onChange={onChange}
+          defaultChecked={defaultChecked}
         />
         {label}
       </label>
@@ -23,7 +23,7 @@ export default RadioButton;
 RadioButton.propTypes = {
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  value: PropTypes.string,
-  checked: PropTypes.bool,
-  onChange: PropTypes.func
+  value: PropTypes.any,
+  onChange: PropTypes.func,
+  defaultChecked: PropTypes.bool
 };
