@@ -26,6 +26,7 @@ nav {
   width: 350px;
   min-height: 100vh;
   background-color: $jinn_bg;
+  transform: translateX(200%);
 
   &.slide-in {
     animation: slide-in 0.5s forwards;
