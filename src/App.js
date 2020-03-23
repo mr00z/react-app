@@ -1,14 +1,17 @@
-import React from "react";
-import Container from "./components/bulma/Container";
-import Header from "./components/Header/Header";
-import SongForm from "./features/SongForm/components/SongForm";
+import React from 'react';
+import Header from './components/Header/Header';
+import Navbar from './components/Navigation/Navbar';
+import Footer from './components/Footer/Footer';
+import MainRoutes from './routes/MainRoutes';
 
 const App = () => {
   return (
-    <Container>
+    <>
+      <Navbar />
       <Header />
-      <SongForm />
-    </Container>
+      <MainRoutes />
+      <Footer />
+    </>
   );
 };
 

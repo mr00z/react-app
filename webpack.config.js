@@ -1,10 +1,11 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const path = require("path");
-const webpack = require("webpack");
-const dotenv = require("dotenv");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 
 const env = dotenv.config().parsed;
+const devMode = process.env.NODE_ENV !== 'production';
 
 const envKeys = Object.keys(env).reduce((prev, next) => {
   prev[`process.env.${next}`] = JSON.stringify(env[next]);
@@ -17,32 +18,58 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ['babel-loader']
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ["babel-loader", "eslint-loader"]
+        use: ['babel-loader', 'eslint-loader']
       },
       {
         test: /\.html$/,
-        use: ["html-loader"]
+        use: ['html-loader']
       },
       {
-        test: /\.(scss|css|sass)$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader!sass-loader"
-        })
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: true,
+              hmr: devMode
+            }
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+              localIdentName: '[local]'
+            }
+          },
+          'sass-loader'
+        ]
       },
       {
         test: /\.(jpg|png|gif|svg)$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
-              name: "[name].[ext]",
-              outputPath: "./assets/"
+              name: '[name].[ext]',
+              outputPath: './assets/'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: './fonts/'
             }
           }
         ]
@@ -51,15 +78,19 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./public/index.html",
-      filename: "./index.html"
+      template: './public/index.html',
+      filename: './index.html'
     }),
-    new ExtractTextPlugin("style.css"),
+    new MiniCssExtractPlugin({
+      filename: devMode ? '[name].css' : '[name].[hash].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
+      ignoreOrder: false // Enable to remove warnings about conflicting order
+    }),
     new webpack.DefinePlugin(envKeys)
   ],
   devServer: {
-    contentBase: path.resolve(__dirname, "public/assets"),
-    stats: "errors-only",
+    contentBase: path.resolve(__dirname, 'public/assets'),
+    stats: 'errors-only',
     open: true,
     port: 8080,
     compress: true

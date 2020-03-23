@@ -1,17 +1,15 @@
-import React from "react";
-import headphones from "../../assets/music.png";
+import React from 'react';
+import genie from '../../assets/genie.png';
 
-import "./header.scss";
+import './header.scss';
 
 const Header = () => (
   <div
     className="is-flex"
-    style={{ alignItems: "center", justifyContent: "center" }}
+    style={{ alignItems: 'center', justifyContent: 'center' }}
   >
-    <img src={headphones} className="header__img" />
-    <div className="has-text-centered has-text-grey-lighter header__text">
-      Music jinn
-    </div>
+    <img src={genie} className="header__img" />
+    <div className="has-text-centered header__text">Music Jinn</div>
   </div>
 );
 
