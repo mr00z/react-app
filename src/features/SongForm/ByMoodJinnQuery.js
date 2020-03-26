@@ -7,7 +7,7 @@ class ByMoodJinnQuery {
 
   getQueryString() {
     const moodString = this.mood || '';
-    const wantToStayString = this.wantToStay || false;
+    const wantToStayString = this.wantToStay || true;
 
     return `${this.endpoint}?mood=${moodString}&wantToStay=${wantToStayString}`;
   }

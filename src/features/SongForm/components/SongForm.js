@@ -47,25 +47,19 @@ const SongForm = () => {
 
     const response = await MusicJinnAPIConnector.get(getSongs.getQueryString());
 
-    if (response.length > 0) {
-      const max = response.length;
-      const number = Math.floor(Math.random() * (+max - +0)) + +0;
-      setSongName(response[number].name);
-      setSongAuthor(response[number].author);
-    } else {
-      setSongName('');
-      setSongAuthor('');
-    }
+    setSongName(response?.title);
+    setSongAuthor(response?.author);
+
     setIsLoading(false);
     setSongReady(true);
   };
   return (
     <>
       <Form onSubmit={handleSongFormSubmit}>
-        <FormField label="How do you feel?">
+        <FormField label="How do you feel?" textAlign="center">
           <Dropdown options={moods} onChange={handleInputChange} name="mood" />
         </FormField>
-        <FormField label="Do you want to stay in this mood?">
+        <FormField label="Do you want to stay in this mood?" textAlign="center">
           <Control className="has-text-centered">
             <RadioButton
               label="Yes"

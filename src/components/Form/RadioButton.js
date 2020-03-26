@@ -25,5 +25,5 @@ RadioButton.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.any,
   onChange: PropTypes.func,
-  defaultChecked: PropTypes.bool
+  defaultChecked: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
 };
