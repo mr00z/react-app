@@ -14,24 +14,18 @@ const Navbar = () => {
 
   return (
     <>
-      {isOpen && (
-        <div
-          className={styles.navigation__shadow}
-          onClick={handleChangeNavbarState}
-        />
-      )}
+      {isOpen && <div className={styles.navigation__shadow} onClick={handleChangeNavbarState} />}
       <nav role="navigation">
-        <HamburgerButton
-          onClick={handleChangeNavbarState}
-          isNavbarOpen={isOpen}
-        />
+        <HamburgerButton onClick={handleChangeNavbarState} isNavbarOpen={isOpen} />
         <div
           className={clsx(styles.navigation__navbar_active, {
             'slide-in': isOpen === true,
             'slide-out': isOpen === false
           })}
         >
-          <img src={logo} alt="Logo" />
+          <div className={styles.navigation__image_container}>
+            <img src={logo} alt="Logo" />
+          </div>
           <Menu>
             <Menu.List>
               <Menu.ListItem>

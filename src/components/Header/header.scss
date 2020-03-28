@@ -1,12 +1,33 @@
+@import '../../styles/mixins.scss';
+
+.header__container {
+  align-items: center;
+  justify-content: center;
+}
+
 .header__text {
   font-size: 5em;
   letter-spacing: 0.3em;
   padding-left: 0.5em;
   font-family: 'Philosopher', sans-serif;
   font-weight: 700;
+
+  @include mobile {
+    font-size: 2.5em;
+    transform: translateX(-15%);
+  }
+
+  @include tablet {
+    font-size: 4em;
+  }
 }
 
 .header__img {
   height: 200px;
   width: auto;
+
+  @include mobile {
+    height: 150px;
+    width: auto;
+  }
 }

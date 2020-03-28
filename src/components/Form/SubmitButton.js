@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 const SubmitButton = ({ onClick, isLoading, children }) => (
   <button
     type="submit"
-    className={`button text-center is-link ${
-      isLoading ? 'is-loading' : undefined
-    }`}
+    className={clsx('button text-center is-link is-medium is-size-6-mobile', {
+      'is-loading': isLoading
+    })}
     onClick={onClick}
   >
     {children}

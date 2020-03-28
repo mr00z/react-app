@@ -10,6 +10,8 @@ import useSongsMoods from './useSongsMoods';
 import RadioButton from '../../../components/Form/RadioButton';
 import Control from '../../../components/bulma/Control';
 
+import styles from './songForm.scss';
+
 const SongForm = () => {
   const [songReady, setSongReady] = useState(false);
   const [songName, setSongName] = useState('');
@@ -54,7 +56,7 @@ const SongForm = () => {
     setSongReady(true);
   };
   return (
-    <>
+    <div className={styles.songForm__container}>
       <Form onSubmit={handleSongFormSubmit}>
         <FormField label="How do you feel?" textAlign="center">
           <Dropdown options={moods} onChange={handleInputChange} name="mood" />
@@ -81,9 +83,8 @@ const SongForm = () => {
           <SubmitButton isLoading={isLoading}>Give me the song!</SubmitButton>
         </FormField>
       </Form>
-      <br />
       {songReady && <SongFormResult name={songName} author={songAuthor} />}
-    </>
+    </div>
   );
 };
 

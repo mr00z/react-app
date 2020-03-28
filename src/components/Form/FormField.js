@@ -11,7 +11,10 @@ const FormField = ({ label, children, textAlign }) => (
         'has-text-right': textAlign === 'right'
       })}
     >
-      <label className="label has-text-grey-lighter">{label}</label>
+      {/* eslint-disable-next-line max-len */}
+      <label className="label has-text-grey-lighter is-size-5-mobile is-size-4-tablet is-size-3-desktop is-size-4-widescreen">
+        {label}
+      </label>
       {children}
     </div>
   </div>

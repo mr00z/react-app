@@ -1,4 +1,5 @@
 @import '../../styles/variables.scss';
+@import '../../styles/mixins.scss';
 
 nav {
   position: fixed;
@@ -28,6 +29,10 @@ nav {
   background-color: $jinn_bg;
   transform: translateX(200%);
 
+  @include mobile {
+    width: 325px;
+  }
+
   &.slide-in {
     animation: slide-in 0.5s forwards;
     -webkit-animation: slide-in 0.5s forwards;
@@ -36,6 +41,18 @@ nav {
   &.slide-out {
     animation: slide-out 0.5s forwards;
     -webkit-animation: slide-out 0.5s forwards;
+  }
+
+  .navigation__image_container {
+    display: flex;
+    justify-content: center;
+  }
+
+  img {
+    @include mobile {
+      width: 275px;
+      height: auto;
+    }
   }
 }
 

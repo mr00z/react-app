@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import "./form.scss";
+import React from 'react';
+import PropTypes from 'prop-types';
+import './form.scss';
 
 const Form = ({ onSubmit, children }) => (
   <form className="has-text-grey-lighter" onSubmit={onSubmit}>
