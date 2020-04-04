@@ -1,7 +1,32 @@
+@import '../../../styles/mixins.scss';
+
 .songForm__container {
   min-height: 55vh;
 }
 
 .songForm__result {
-  margin-top: 2em;
+  margin-top: 1em;
+
+  .songForm__result_video_container {
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+
+    @include tablet {
+      margin-top: -1em;
+    }
+
+    @include mobile {
+      margin-top: -1em;
+    }
+
+    .songForm__result_video {
+      @include tablet {
+        transform: scale(0.75);
+      }
+      @include mobile {
+        transform: scale(0.85, 0.75);
+      }
+    }
+  }
 }
