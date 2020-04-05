@@ -14,8 +14,7 @@ import styles from './songForm.scss';
 
 const SongForm = () => {
   const [songReady, setSongReady] = useState(false);
-  const [songName, setSongName] = useState('');
-  const [songAuthor, setSongAuthor] = useState('');
+  const [song, setSong] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const moods = useSongsMoods();
@@ -49,8 +48,7 @@ const SongForm = () => {
 
     const response = await MusicJinnAPIConnector.get(getSongs.getQueryString());
 
-    setSongName(response?.title);
-    setSongAuthor(response?.author);
+    setSong(response);
 
     setIsLoading(false);
     setSongReady(true);
@@ -83,7 +81,7 @@ const SongForm = () => {
           <SubmitButton isLoading={isLoading}>Give me the song!</SubmitButton>
         </FormField>
       </Form>
-      {songReady && <SongFormResult name={songName} author={songAuthor} />}
+      {songReady && <SongFormResult song={song} />}
     </div>
   );
 };
