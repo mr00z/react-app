@@ -36,8 +36,8 @@ SongFormResult.propTypes = {
     title: PropTypes.string,
     genres: PropTypes.array,
     moods: PropTypes.array,
-    servicesData: PropTypes.object
-  })
+    servicesData: PropTypes.object,
+  }),
 };
 
 export default SongFormResult;
