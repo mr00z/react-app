@@ -9,6 +9,7 @@
 $family-sans-serif: 'Muli', sans-serif;
 $primary: $jinn_primary;
 $link: $jinn_secondary;
+$link-hover: $jinn_secondary_75;
 
 // Update some of Bulma's component variables
 $body-background-color: $jinn_bg;
@@ -24,3 +25,7 @@ $footer-background-color: $jinn_bg;
 
 // Import only what you need from Bulma
 @import '../../node_modules/bulma';
+
+.radio:hover {
+  color: inherit;
+}
