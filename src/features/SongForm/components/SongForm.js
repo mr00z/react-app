@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import Select from 'react-select';
 import FormField from '../../../components/Form/FormField';
-import Dropdown from '../../../components/bulma/Dropdown';
 import SubmitButton from '../../../components/Form/SubmitButton';
 import Form from '../../../components/Form/Form';
 import SongFormResult from './SongFormResult';
@@ -11,35 +11,41 @@ import RadioButton from '../../../components/Form/RadioButton';
 import Control from '../../../components/bulma/Control';
 
 import styles from './songForm.scss';
+import theme from '../../../components/react-select/theme';
 
 const SongForm = () => {
   const [songReady, setSongReady] = useState(false);
   const [song, setSong] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const moods = useSongsMoods();
+  const allMoods = useSongsMoods();
 
   const [formState, setFormState] = useState({
     mood: null,
-    wantToStay: true
+    wantToStay: true,
   });
 
-  useEffect(() => {
-    setFormState({ ...formState, mood: moods[0] });
-  }, [moods]);
+  const handleSelectChange = (input) => {
+    if (!input) return;
 
-  const handleInputChange = event => {
+    setFormState({
+      ...formState,
+      mood: input.value,
+    });
+  };
+
+  const handleInputChange = (event) => {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
     setFormState({
       ...formState,
-      [name]: value
+      [name]: value,
     });
   };
 
-  const handleSongFormSubmit = async e => {
+  const handleSongFormSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -57,7 +63,14 @@ const SongForm = () => {
     <div className={styles.songForm__container}>
       <Form onSubmit={handleSongFormSubmit}>
         <FormField label="How do you feel?" textAlign="center">
-          <Dropdown options={moods} onChange={handleInputChange} name="mood" />
+          <Select
+            options={allMoods.map((element) => ({ value: element, label: element }))}
+            onChange={handleSelectChange}
+            name="mood"
+            className={`${styles.songForm__select} has-text-grey-dark`}
+            theme={theme}
+            placeholder="Select your current mood..."
+          />
         </FormField>
         <FormField label="Do you want to stay in this mood?" textAlign="center">
           <Control className="has-text-centered">
@@ -78,7 +91,9 @@ const SongForm = () => {
           </Control>
         </FormField>
         <FormField>
-          <SubmitButton isLoading={isLoading}>Give me the song!</SubmitButton>
+          <SubmitButton isLoading={isLoading} disabled={formState.mood === null}>
+            Give me the song!
+          </SubmitButton>
         </FormField>
       </Form>
       {songReady && <SongFormResult song={song} />}
