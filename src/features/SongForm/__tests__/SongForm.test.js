@@ -13,12 +13,12 @@ it('displays list of moods and gives a result', async () => {
 
   const { getByText, findByTestId } = render(<SongForm />);
 
-  const indicator = document.querySelector('div[class$=indicatorContainer]');
-  fireEvent.click(indicator);
+  const indicator = getByText('Select your current mood...');
+  fireEvent.mouseDown(indicator.parentNode);
 
-  await waitFor(() => document.querySelector('div[class$=MenuList]'));
+  await waitFor(() => getByText(allMoods[0]));
 
-  const options = document.querySelector('div[class$=MenuList]');
+  const options = getByText(allMoods[0]).parentNode;
 
   expect(options.childElementCount).toEqual(allMoods.length);
 
