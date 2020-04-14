@@ -1,24 +1,20 @@
 import React, { useState } from 'react';
-import Select from 'react-select';
 import FormField from '../../../components/Form/FormField';
 import SubmitButton from '../../../components/Form/SubmitButton';
 import Form from '../../../components/Form/Form';
 import SongFormResult from './SongFormResult';
 import ByMoodJinnQuery from '../ByMoodJinnQuery';
 import MusicJinnAPIConnector from '../../../integrations/MusicJinnAPIConnector';
-import useSongsMoods from './useSongsMoods';
 import RadioButton from '../../../components/Form/RadioButton';
 import Control from '../../../components/bulma/Control';
 
 import styles from './songForm.scss';
-import theme from '../../../components/react-select/theme';
+import AllMoodsSelect from '../../../components/Select/Moods/AllMoodsSelect';
 
 const SongForm = () => {
   const [songReady, setSongReady] = useState(false);
   const [song, setSong] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
-  const allMoods = useSongsMoods();
 
   const [formState, setFormState] = useState({
     mood: null,
@@ -63,14 +59,7 @@ const SongForm = () => {
     <div className={styles.songForm__container}>
       <Form onSubmit={handleSongFormSubmit}>
         <FormField label="How do you feel?" textAlign="center">
-          <Select
-            options={allMoods.map((element) => ({ value: element, label: element }))}
-            onChange={handleSelectChange}
-            name="mood"
-            className={`${styles.songForm__select} has-text-grey-dark`}
-            theme={theme}
-            placeholder="Select your current mood..."
-          />
+          <AllMoodsSelect onChange={handleSelectChange} name="mood" placeholder="Select your current mood..." />
         </FormField>
         <FormField label="Do you want to stay in this mood?" textAlign="center">
           <Control className="has-text-centered">
