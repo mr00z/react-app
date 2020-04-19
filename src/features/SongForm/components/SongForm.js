@@ -10,11 +10,17 @@ import Control from '../../../components/bulma/Control';
 
 import styles from './songForm.scss';
 import AllMoodsSelect from '../../../components/Select/Moods/AllMoodsSelect';
+import Switch from '../../../components/bulma/Switch';
+import Container from '../../../components/bulma/Container';
+import { getMusicPreferences } from '../../MusicPreferences/localStorageUtils';
+
+const musicPreferences = getMusicPreferences();
 
 const SongForm = () => {
   const [songReady, setSongReady] = useState(false);
   const [song, setSong] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [shouldUsePreferences, setShouldUsePreferences] = useState(false);
 
   const [formState, setFormState] = useState({
     mood: null,
@@ -55,9 +61,22 @@ const SongForm = () => {
     setIsLoading(false);
     setSongReady(true);
   };
+
+  const hasMusicPreferences = musicPreferences !== null;
+
   return (
-    <div className={styles.songForm__container}>
+    <Container className={styles.songForm__container}>
       <Form onSubmit={handleSongFormSubmit}>
+        {hasMusicPreferences && (
+          <FormField>
+            <Switch
+              id="usePreferences"
+              checked={shouldUsePreferences}
+              onChange={() => setShouldUsePreferences(!shouldUsePreferences)}
+            />
+            <label htmlFor="usePreferences">Use music preferences</label>
+          </FormField>
+        )}
         <FormField label="How do you feel?" textAlign="center">
           <AllMoodsSelect onChange={handleSelectChange} name="mood" placeholder="Select your current mood..." />
         </FormField>
@@ -86,10 +105,8 @@ const SongForm = () => {
         </FormField>
       </Form>
       {songReady && <SongFormResult song={song} />}
-    </div>
+    </Container>
   );
 };
-
-SongForm.propTypes = {};
 
 export default SongForm;

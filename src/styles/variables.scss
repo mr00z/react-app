@@ -1,15 +1,15 @@
 $jinn_bg: #034a4a;
-$jinn_primary: #4a8891;
-$jinn_secondary: #e87967;
-$jinn_secondary_75: #ec9385;
-$jinn_secondary_50: #f1aea3;
-$jinn_secondary_25: #f5c9c2;
+$jinn_primary: #e87967;
+$jinn_primary_75: #ec9385;
+$jinn_primary_50: #f1aea3;
+$jinn_primary_25: #f5c9c2;
+$jinn_secondary: #4a8891;
 $jinn_tertiary: #798333;
 $jinn_lightest: #bbd2d5;
 
 :export {
-  jinn_secondary: $jinn_secondary;
-  jinn_secondary_75: $jinn_secondary_75;
-  jinn_secondary_50: $jinn_secondary_50;
-  jinn_secondary_25: $jinn_secondary_25;
+  jinn_primary: $jinn_primary;
+  jinn_primary_75: $jinn_primary_75;
+  jinn_primary_50: $jinn_primary_50;
+  jinn_primary_25: $jinn_primary_25;
 }
