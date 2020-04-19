@@ -11,7 +11,7 @@ const SongFormResult = ({ song }) => {
       // eslint-disable-next-line max-len
       className={`has-text-centered has-text-light is-size-5-mobile is-size-4-tablet is-size-3-desktop is-size-4-widescreen ${styles.songForm__result}`}
     >
-      {song ? (
+      {song?.title ? (
         <>
           Your song is: <br />
           {song.title} by {song.author}
