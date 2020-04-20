@@ -21,6 +21,10 @@
     }
 
     .songForm__result_video {
+      -webkit-box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+      -moz-box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+      box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.5);
+
       @include tablet {
         transform: scale(0.75);
       }
