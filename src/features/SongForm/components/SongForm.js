@@ -7,11 +7,8 @@ import ByMoodJinnQuery from '../ByMoodJinnQuery';
 import MusicJinnAPIConnector from '../../../integrations/MusicJinnAPIConnector';
 import RadioButton from '../../../components/Form/RadioButton';
 import Control from '../../../components/bulma/Control';
-
-import styles from './songForm.scss';
 import AllMoodsSelect from '../../../components/Select/Moods/AllMoodsSelect';
 import Switch from '../../../components/bulma/Switch';
-import Container from '../../../components/bulma/Container';
 import { getMusicPreferences } from '../../MusicPreferences/localStorageUtils';
 
 const musicPreferences = getMusicPreferences();
@@ -80,7 +77,7 @@ const SongForm = () => {
   const hasMusicPreferences = musicPreferences !== null;
 
   return (
-    <Container className={styles.songForm__container}>
+    <>
       <Form onSubmit={handleSongFormSubmit}>
         {hasMusicPreferences && (
           <FormField>
@@ -121,7 +118,7 @@ const SongForm = () => {
         </FormField>
       </Form>
       {songReady && <SongFormResult song={song} />}
-    </Container>
+    </>
   );
 };
 
