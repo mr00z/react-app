@@ -11,10 +11,10 @@ import AllMoodsSelect from '../../../components/Select/Moods/AllMoodsSelect';
 import Switch from '../../../components/bulma/Switch';
 import { getMusicPreferences } from '../../MusicPreferences/localStorageUtils';
 
-const musicPreferences = getMusicPreferences();
-const randomSong = musicPreferences?.moods[Math.floor(Math.random() * musicPreferences.moods.length)];
-
 const SongForm = () => {
+  const musicPreferences = getMusicPreferences();
+  const randomSong = musicPreferences?.moods[Math.floor(Math.random() * musicPreferences.moods.length)];
+
   const [songReady, setSongReady] = useState(false);
   const [song, setSong] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
