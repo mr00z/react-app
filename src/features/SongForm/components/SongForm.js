@@ -1,36 +1,42 @@
-import React, { useState } from 'react';
-import Select from 'react-select';
+import React, { useState, useEffect } from 'react';
 import FormField from '../../../components/Form/FormField';
 import SubmitButton from '../../../components/Form/SubmitButton';
 import Form from '../../../components/Form/Form';
 import SongFormResult from './SongFormResult';
 import ByMoodJinnQuery from '../ByMoodJinnQuery';
 import MusicJinnAPIConnector from '../../../integrations/MusicJinnAPIConnector';
-import useSongsMoods from './useSongsMoods';
 import RadioButton from '../../../components/Form/RadioButton';
 import Control from '../../../components/bulma/Control';
-
-import styles from './songForm.scss';
-import theme from '../../../components/react-select/theme';
+import AllMoodsSelect from '../../../components/Select/Moods/AllMoodsSelect';
+import Switch from '../../../components/bulma/Switch';
+import { getMusicPreferences } from '../../MusicPreferences/localStorageUtils';
 
 const SongForm = () => {
+  const musicPreferences = getMusicPreferences();
+  const randomSong = musicPreferences?.moods[Math.floor(Math.random() * musicPreferences.moods.length)];
+
   const [songReady, setSongReady] = useState(false);
   const [song, setSong] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-
-  const allMoods = useSongsMoods();
+  const [shouldUsePreferences, setShouldUsePreferences] = useState(
+    localStorage.getItem('shouldUsePreferences') === 'true'
+  );
 
   const [formState, setFormState] = useState({
     mood: null,
     wantToStay: true,
   });
 
+  useEffect(() => {
+    if (shouldUsePreferences) setFormState({ ...formState, mood: randomSong });
+  }, [shouldUsePreferences]);
+
   const handleSelectChange = (input) => {
     if (!input) return;
 
     setFormState({
       ...formState,
-      mood: input.value,
+      mood: input,
     });
   };
 
@@ -50,7 +56,10 @@ const SongForm = () => {
     setIsLoading(true);
 
     const { wantToStay, mood } = formState;
-    const getSongs = new ByMoodJinnQuery(mood, wantToStay);
+    let getSongs;
+
+    if (shouldUsePreferences) getSongs = new ByMoodJinnQuery(mood.value, wantToStay, musicPreferences?.genres);
+    else getSongs = new ByMoodJinnQuery(mood.value, wantToStay);
 
     const response = await MusicJinnAPIConnector.get(getSongs.getQueryString());
 
@@ -59,17 +68,29 @@ const SongForm = () => {
     setIsLoading(false);
     setSongReady(true);
   };
+
+  const handleSwitchToogle = () => {
+    localStorage.setItem('shouldUsePreferences', !shouldUsePreferences);
+    setShouldUsePreferences(!shouldUsePreferences);
+  };
+
+  const hasMusicPreferences = musicPreferences !== null;
+
   return (
-    <div className={styles.songForm__container}>
+    <>
       <Form onSubmit={handleSongFormSubmit}>
+        {hasMusicPreferences && (
+          <FormField>
+            <Switch id="usePreferences" checked={shouldUsePreferences} onChange={handleSwitchToogle} />
+            <label htmlFor="usePreferences">Use music preferences</label>
+          </FormField>
+        )}
         <FormField label="How do you feel?" textAlign="center">
-          <Select
-            options={allMoods.map((element) => ({ value: element, label: element }))}
+          <AllMoodsSelect
             onChange={handleSelectChange}
             name="mood"
-            className={`${styles.songForm__select} has-text-grey-dark`}
-            theme={theme}
             placeholder="Select your current mood..."
+            value={formState.mood}
           />
         </FormField>
         <FormField label="Do you want to stay in this mood?" textAlign="center">
@@ -97,10 +118,8 @@ const SongForm = () => {
         </FormField>
       </Form>
       {songReady && <SongFormResult song={song} />}
-    </div>
+    </>
   );
 };
-
-SongForm.propTypes = {};
 
 export default SongForm;

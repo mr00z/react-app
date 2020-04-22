@@ -18,16 +18,16 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader']
+        use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.html$/,
-        use: ['html-loader']
+        use: ['html-loader'],
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -36,19 +36,19 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
             options: {
               esModule: true,
-              hmr: devMode
-            }
+              hmr: devMode,
+            },
           },
           {
             loader: 'css-loader',
             options: {
               importLoaders: 1,
               modules: true,
-              localIdentName: '[local]'
-            }
+              localIdentName: '[local]',
+            },
           },
-          'sass-loader'
-        ]
+          'sass-loader',
+        ],
       },
       {
         test: /\.(jpg|png|gif|svg)$/,
@@ -57,10 +57,10 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: './assets/'
-            }
-          }
-        ]
+              outputPath: './assets/',
+            },
+          },
+        ],
       },
       {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
@@ -69,30 +69,34 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: './fonts/'
-            }
-          }
-        ]
-      }
-    ]
+              outputPath: './fonts/',
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
-      filename: './index.html'
+      filename: './index.html',
     }),
     new MiniCssExtractPlugin({
       filename: devMode ? '[name].css' : '[name].[hash].css',
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
-      ignoreOrder: false // Enable to remove warnings about conflicting order
+      ignoreOrder: false, // Enable to remove warnings about conflicting order
     }),
-    new webpack.DefinePlugin(envKeys)
+    new webpack.DefinePlugin(envKeys),
   ],
   devServer: {
     contentBase: path.resolve(__dirname, 'public/assets'),
     stats: 'errors-only',
     open: true,
     port: 8080,
-    compress: true
-  }
+    compress: true,
+    historyApiFallback: true,
+  },
+  output: {
+    publicPath: '/',
+  },
 };

@@ -1,16 +1,51 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
 import SongForm from '../components/SongForm';
+import { setMusicPreferences } from '../../MusicPreferences/localStorageUtils';
+import { act } from 'react-dom/test-utils';
 
-it('displays list of moods and gives a result', async () => {
-  const allMoods = ['Test_Mood1', 'Test_Mood2', 'Test_Mood3'];
+const allMoods = ['Test_Mood1', 'Test_Mood2', 'Test_Mood3'];
 
+const musicPreferencesMock = {
+  genres: [{ label: 'Blues', value: 'Blues' }],
+  moods: [{ label: 'Happy', value: 'Happy' }],
+};
+
+beforeEach(() => {
   global.fetch = jest.fn().mockImplementation(() =>
     Promise.resolve({
       json: () => Promise.resolve(allMoods),
     })
   );
+});
 
+afterEach(() => {
+  localStorage.clear();
+});
+
+it('renders switch button when music preferences are defined', async () => {
+  setMusicPreferences(musicPreferencesMock);
+
+  await act(async () => {
+    const { findByLabelText } = render(<SongForm />);
+
+    expect(await findByLabelText('Use music preferences')).toBeDefined();
+  });
+});
+
+it('assigns random mood when switch is turned on', async () => {
+  setMusicPreferences(musicPreferencesMock);
+
+  const { getByLabelText, getByText } = render(<SongForm />);
+
+  await act(async () => {
+    fireEvent.click(await getByLabelText('Use music preferences'));
+  });
+
+  expect(getByText(musicPreferencesMock.moods[0].label)).toBeDefined();
+});
+
+it('displays list of moods and gives a result', async () => {
   const { getByText, findByTestId } = render(<SongForm />);
 
   const indicator = getByText('Select your current mood...');

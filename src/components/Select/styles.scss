@@ -1,0 +1,11 @@
+@import '../../styles/mixins.scss';
+
+.custom_select {
+  width: 400px;
+  @include tablet {
+    width: 350px;
+  }
+  @include mobile {
+    width: 300px;
+  }
+}

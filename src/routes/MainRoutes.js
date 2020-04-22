@@ -1,6 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import SongForm from '../features/SongForm/components/SongForm';
+import MusicPreferences from '../features/MusicPreferences/components/MusicPreferences';
 
 const MainRoutes = () => {
   return (
@@ -9,7 +10,7 @@ const MainRoutes = () => {
         <SongForm />
       </Route>
       <Route path="/preferences">
-        <div />
+        <MusicPreferences />
       </Route>
       <Route path="/songsBank">
         <div />

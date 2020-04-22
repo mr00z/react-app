@@ -5,7 +5,7 @@ import clsx from 'clsx';
 const SubmitButton = ({ onClick, isLoading, children, ...otherProps }) => (
   <button
     type="submit"
-    className={clsx('button text-center is-link is-medium is-size-6-mobile', {
+    className={clsx('button text-center is-primary is-medium is-size-6-mobile', {
       'is-loading': isLoading,
     })}
     onClick={onClick}

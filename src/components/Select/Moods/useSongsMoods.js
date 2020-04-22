@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import MusicJinnAPIConnector from "../../../integrations/MusicJinnAPIConnector";
-import SongsMoodsQuery from "../SongsMoodsQuery";
+import { useState, useEffect } from 'react';
+import MusicJinnAPIConnector from '../../../integrations/MusicJinnAPIConnector';
+import SongsMoodsQuery from './SongsMoodsQuery';
 
 const useSongsMoods = () => {
   const [moods, setMoods] = useState([]);
