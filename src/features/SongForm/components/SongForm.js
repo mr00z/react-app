@@ -13,7 +13,7 @@ import { getMusicPreferences } from '../../MusicPreferences/localStorageUtils';
 
 const SongForm = () => {
   const musicPreferences = getMusicPreferences();
-  const randomSong = musicPreferences?.moods[Math.floor(Math.random() * musicPreferences.moods.length)];
+  const randomMood = musicPreferences?.moods[Math.floor(Math.random() * musicPreferences.moods.length)];
 
   const [songReady, setSongReady] = useState(false);
   const [song, setSong] = useState(null);
@@ -28,7 +28,7 @@ const SongForm = () => {
   });
 
   useEffect(() => {
-    if (shouldUsePreferences) setFormState({ ...formState, mood: randomSong });
+    if (shouldUsePreferences) setFormState({ ...formState, mood: randomMood });
   }, [shouldUsePreferences]);
 
   const handleSelectChange = (input) => {

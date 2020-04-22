@@ -1,8 +1,7 @@
 import React from 'react';
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render, fireEvent, waitFor, act, cleanup } from '@testing-library/react';
 import SongForm from '../components/SongForm';
 import { setMusicPreferences } from '../../MusicPreferences/localStorageUtils';
-import { act } from 'react-dom/test-utils';
 
 const allMoods = ['Test_Mood1', 'Test_Mood2', 'Test_Mood3'];
 
@@ -21,6 +20,7 @@ beforeEach(() => {
 
 afterEach(() => {
   localStorage.clear();
+  cleanup();
 });
 
 it('renders switch button when music preferences are defined', async () => {
