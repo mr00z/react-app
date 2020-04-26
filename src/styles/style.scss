@@ -31,6 +31,12 @@ $footer-background-color: $jinn_bg;
   color: inherit;
 }
 
+.pagination-previous,
+.pagination-next,
+.pagination-link {
+  background-color: #fff;
+}
+
 .app__container {
   min-height: 55vh;
 }

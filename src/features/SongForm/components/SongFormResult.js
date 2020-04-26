@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './songForm.scss';
+import styles from '../songForm.scss';
 import YouTube from 'react-youtube';
 
 const SongFormResult = ({ song }) => {

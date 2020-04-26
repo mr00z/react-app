@@ -1,0 +1,14 @@
+.songsBank__container {
+  padding: 0 1rem;
+}
+
+.songsBank__song_box {
+  height: 7rem;
+
+  &_inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
