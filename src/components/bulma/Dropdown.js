@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './bulma.scss';
+import styles from './bulma.scss';
 
 const Dropdown = ({ name, options, onChange }) => (
-  <div className="is-flex bulma__dropdown">
+  <div className={styles.dropdown}>
     <div className="control">
       <div className="select">
         <select onChange={onChange} name={name} className="has-text-grey-dark">
@@ -21,5 +21,5 @@ export default Dropdown;
 Dropdown.propTypes = {
   name: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.string),
-  onChange: PropTypes.func
+  onChange: PropTypes.func,
 };

@@ -1,14 +1,14 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
 
-nav {
+.navbar {
   position: fixed;
   top: 0;
   right: 0;
   z-index: 10;
 }
 
-.navigation__shadow {
+.shadow {
   position: absolute;
   top: 0;
   left: 0;
@@ -19,7 +19,7 @@ nav {
   z-index: 2;
 }
 
-.navigation__navbar_active {
+.navbar_active {
   position: absolute;
   top: 0;
   right: 0;
@@ -43,7 +43,7 @@ nav {
     -webkit-animation: slide-out 0.5s forwards;
   }
 
-  .navigation__image_container {
+  .image_container {
     display: flex;
     justify-content: center;
   }
@@ -100,7 +100,7 @@ nav {
   }
 }
 
-.navigation__hamburger_button {
+.hamburger_button {
   position: relative;
   padding: 15px;
   display: flex;

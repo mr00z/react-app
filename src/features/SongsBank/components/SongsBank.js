@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import SongsQuery from '../SongsQuery';
 import Pagination from '../../../components/bulma/Pagination';
 import styles from '../songsBank.scss';
+import SearchInput from '../../../components/SearchInput/SearchInput';
 
 const SongsBank = () => {
   const [queryResult, setQueryResult] = useState(null);
   const [parameters, setParameters] = useState({
-    title: null,
-    author: null,
+    query: null,
     genres: null,
     moods: null,
     resultsPerPage: 12,
@@ -24,18 +24,23 @@ const SongsBank = () => {
 
   useEffect(() => {
     getSongs();
-  }, [parameters]);
+  }, []);
 
   const songs = queryResult?.songs;
 
   return (
-    <div className={styles.songsBank__container}>
+    <div className={styles.container}>
       <h3 className="title has-text-grey-lighter has-text-centered">Songs Bank</h3>
-      <div className="columns is-multiline">
+      <SearchInput
+        placeholder="Search for a song or an artist"
+        onInputChange={(e) => setParameters({ ...parameters, query: e.target.value })}
+        onButtonClick={getSongs}
+      />
+      <div className="columns is-multiline is-variable is-6">
         {songs?.map((song, index) => (
           <div className="column is-one-quarter-desktop is-half-tablet" key={index}>
-            <div className={`box ${styles.songsBank__song_box}`}>
-              <div className={`${styles.songsBank__song_box_inner}`}>
+            <div className={`box ${styles.song_box}`}>
+              <div className={`${styles.song_box_inner}`}>
                 <div>{song.title}</div>
                 <div className="has-text-weight-bold">{song.author}</div>
               </div>

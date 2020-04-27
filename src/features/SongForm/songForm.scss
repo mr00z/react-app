@@ -1,9 +1,9 @@
 @import '../../styles/mixins.scss';
 
-.songForm__result {
+.result {
   margin-top: 1em;
 
-  .songForm__result_video_container {
+  .result_video_container {
     margin-top: 1em;
     display: flex;
     justify-content: center;
@@ -16,7 +16,7 @@
       margin-top: -1em;
     }
 
-    .songForm__result_video {
+    .result_video {
       -webkit-box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.5);
       -moz-box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.5);
       box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.5);

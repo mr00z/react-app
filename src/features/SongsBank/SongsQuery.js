@@ -2,9 +2,8 @@ import MusicJinnAPIConnector from '../../integrations/MusicJinnAPIConnector';
 
 class SongsQuery {
   endpoint = 'songs';
-  constructor(title, author, genres, moods, resultsPerPage, page) {
-    this.title = title;
-    this.author = author;
+  constructor(query, genres, moods, resultsPerPage, page) {
+    this.query = query;
     this.genres = genres;
     this.moods = moods;
     this.resultsPerPage = resultsPerPage;
@@ -12,8 +11,7 @@ class SongsQuery {
   }
 
   getQueryString() {
-    const titleString = this.title ? `&title=${this.title}` : '';
-    const authorString = this.author ? `&author=${this.author}` : '';
+    const userQueryString = this.query ? `&query=${this.query}` : '';
 
     let genresString = this.genres?.map((element) => `genres=${element?.value}`).join('&') || '';
     if (genresString) genresString = `&${genresString}`;
@@ -22,7 +20,7 @@ class SongsQuery {
     if (moodsString) moodsString = `&${moodsString}`;
 
     // eslint-disable-next-line max-len
-    return `${this.endpoint}?page=${this.page}&resultsPerPage=${this.resultsPerPage}${titleString}${authorString}${genresString}${moodsString}`;
+    return `${this.endpoint}?page=${this.page}&resultsPerPage=${this.resultsPerPage}${userQueryString}${genresString}${moodsString}`;
   }
 
   execute() {
