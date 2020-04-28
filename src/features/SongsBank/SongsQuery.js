@@ -16,7 +16,7 @@ class SongsQuery {
     let genresString = this.genres?.map((element) => `genres=${element?.value}`).join('&') || '';
     if (genresString) genresString = `&${genresString}`;
 
-    let moodsString = this.genres?.map((element) => `moods=${element?.value}`).join('&') || '';
+    let moodsString = this.moods?.map((element) => `moods=${element?.value}`).join('&') || '';
     if (moodsString) moodsString = `&${moodsString}`;
 
     // eslint-disable-next-line max-len

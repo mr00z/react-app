@@ -1,5 +1,7 @@
 .container {
-  width: 40%;
-  display: flex;
-  justify-content: space-between;
+  color: initial;
+}
+
+.input {
+  flex-grow: 1;
 }

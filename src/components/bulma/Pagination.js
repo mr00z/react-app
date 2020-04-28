@@ -6,7 +6,7 @@ const Pagination = ({ pagesCount, onPageClick, currentPage, itemsInTheMiddleCoun
   const isFirstPage = currentPage === 1;
   const isLastPage = currentPage === pagesCount;
 
-  const items = new Array(itemsInTheMiddleCount).fill();
+  const items = new Array(itemsInTheMiddleCount > pagesCount ? pagesCount : itemsInTheMiddleCount).fill();
 
   let sideItemsCount = Math.floor(itemsInTheMiddleCount / 2);
 
@@ -47,6 +47,7 @@ const Pagination = ({ pagesCount, onPageClick, currentPage, itemsInTheMiddleCoun
           if (!shouldRenderFirstEllipsis) pageIndex = Math.max(currentPage - sideItemsCount, 1) + index;
           if (!shouldRenderLastEllipsis)
             pageIndex = Math.min(currentPage - sideItemsCount + 1, pagesCount - (items.length - 1)) + index;
+          if (!shouldRenderFirstEllipsis && !shouldRenderLastEllipsis) pageIndex = currentPage + index;
           return (
             <li key={index}>
               <a
