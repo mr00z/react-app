@@ -6,7 +6,7 @@ import styles from './navigation.scss';
 const HamburgerButton = ({ onClick, isNavbarOpen }) => (
   <div
     className={clsx(styles.hamburger_button, {
-      change: isNavbarOpen,
+      [styles.change]: isNavbarOpen,
     })}
     onClick={onClick}
   >

@@ -3,28 +3,31 @@ import SongsQuery from '../SongsQuery';
 import Pagination from '../../../components/bulma/Pagination';
 import styles from '../songsBank.scss';
 import SearchInput from '../../../components/SearchInput/SearchInput';
+import Loader from '../../../components/Loader/Loader';
 
 const SongsBank = () => {
   const initialParameters = { query: null, genres: null, moods: null, resultsPerPage: 12, page: 1 };
 
   const [queryResult, setQueryResult] = useState(null);
   const [parameters, setParameters] = useState(initialParameters);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getSongs = async (queryParams) => {
-    let query;
-    if (queryParams)
-      query = new SongsQuery(
-        queryParams.query,
-        queryParams.genres,
-        queryParams.moods,
-        queryParams.resultsPerPage,
-        queryParams.page
-      );
-    else query = new SongsQuery(...Object.values(parameters));
+    setIsLoading(true);
+    const query = new SongsQuery(
+      queryParams.query,
+      queryParams.genres,
+      queryParams.moods,
+      queryParams.resultsPerPage,
+      queryParams.page
+    );
 
     const result = await query.execute();
 
-    if (result) setQueryResult(result);
+    if (result.songs) setQueryResult(result);
+    else setQueryResult(null);
+
+    setIsLoading(false);
   };
 
   const handleResetQuery = () => {
@@ -38,7 +41,7 @@ const SongsBank = () => {
   };
 
   useEffect(() => {
-    getSongs();
+    getSongs(initialParameters);
   }, []);
 
   const songs = queryResult?.songs;
@@ -49,7 +52,7 @@ const SongsBank = () => {
   return (
     <div className={styles.container}>
       <h3 className="title has-text-grey-lighter has-text-centered">Songs Bank</h3>
-      <div className="columns is-variable is-6">
+      <div className="columns is-variable is-6-tablet is-4-mobile">
         <div className="column is-half-desktop is-half-tablet">
           <SearchInput
             placeholder="Search for a song or an artist"
@@ -60,9 +63,13 @@ const SongsBank = () => {
           />
         </div>
       </div>
-      {songs && songs.length > 0 ? (
+      {isLoading ? (
+        <div className={`has-text-centered is-size-4 ${styles.no_results}`}>
+          <Loader />
+        </div>
+      ) : songs && songs.length > 0 ? (
         <>
-          <div className="columns is-multiline is-variable is-6">
+          <div className="columns is-multiline is-variable is-6-tablet is-4-mobile">
             {songs.map((song, index) => (
               <div className="column is-one-quarter-desktop is-half-tablet" key={index}>
                 <div className={`box ${styles.song_box}`}>
@@ -82,7 +89,7 @@ const SongsBank = () => {
           />
         </>
       ) : (
-        <div>No results</div>
+        <div className={`has-text-centered is-size-4 ${styles.no_results}`}>No results</div>
       )}
     </div>
   );
