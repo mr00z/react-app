@@ -9,14 +9,13 @@
 }
 
 .shadow {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
-  box-shadow: inset 100vw 100vh rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: inset 100vw 100vh rgba(0, 0, 0, 0.5);
+  height: 100%;
   z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .navbar_active {
