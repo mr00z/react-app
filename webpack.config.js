@@ -10,11 +10,6 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
         use: ['babel-loader', 'eslint-loader'],
       },
       {
@@ -90,7 +85,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: path.resolve(__dirname, 'public', 'index.html'),
       filename: './index.html',
     }),
     new MiniCssExtractPlugin({
@@ -112,7 +107,9 @@ module.exports = {
     compress: true,
     historyApiFallback: true,
   },
+  entry: './src/index.js',
   output: {
-    publicPath: '/',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
   },
 };
