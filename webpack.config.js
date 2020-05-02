@@ -1,16 +1,8 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 const path = require('path');
-const webpack = require('webpack');
-const dotenv = require('dotenv');
-
-const env = dotenv.config().parsed;
 const devMode = process.env.NODE_ENV !== 'production';
-
-const envKeys = Object.keys(env).reduce((prev, next) => {
-  prev[`process.env.${next}`] = JSON.stringify(env[next]);
-  return prev;
-}, {});
 
 module.exports = {
   module: {
@@ -106,7 +98,11 @@ module.exports = {
       chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
       ignoreOrder: false, // Enable to remove warnings about conflicting order
     }),
-    new webpack.DefinePlugin(envKeys),
+    new Dotenv({
+      path: './.env',
+      systemvars: true,
+      silent: true,
+    }),
   ],
   devServer: {
     contentBase: path.resolve(__dirname, 'public/assets'),
