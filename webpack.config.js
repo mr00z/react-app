@@ -30,7 +30,7 @@ module.exports = {
         use: ['html-loader'],
       },
       {
-        test: /\.(sa|sc|c)ss$/,
+        test: /^((?!\.global).)*\.(sa|sc|c)ss$/,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
@@ -44,6 +44,26 @@ module.exports = {
             options: {
               importLoaders: 1,
               modules: true,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
+          },
+          'sass-loader',
+        ],
+      },
+      {
+        test: /\.global\.(sa|sc|c)ss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              esModule: true,
+              hmr: devMode,
+            },
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
               localIdentName: '[local]',
             },
           },

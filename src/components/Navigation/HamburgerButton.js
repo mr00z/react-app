@@ -5,20 +5,20 @@ import styles from './navigation.scss';
 
 const HamburgerButton = ({ onClick, isNavbarOpen }) => (
   <div
-    className={clsx(styles.navigation__hamburger_button, {
-      change: isNavbarOpen
+    className={clsx(styles.hamburger_button, {
+      [styles.change]: isNavbarOpen,
     })}
     onClick={onClick}
   >
-    <div className="bar1" />
-    <div className="bar2" />
-    <div className="bar3" />
+    <div className={styles.bar1} />
+    <div className={styles.bar2} />
+    <div className={styles.bar3} />
   </div>
 );
 
 HamburgerButton.propTypes = {
   onClick: PropTypes.func,
-  isNavbarOpen: PropTypes.bool
+  isNavbarOpen: PropTypes.bool,
 };
 
 export default HamburgerButton;

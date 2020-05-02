@@ -1,25 +1,24 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
 
-nav {
+.navbar {
   position: fixed;
   top: 0;
   right: 0;
   z-index: 10;
 }
 
-.navigation__shadow {
-  position: absolute;
+.shadow {
+  position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
-  box-shadow: inset 100vw 100vh rgba(0, 0, 0, 0.5);
-  -webkit-box-shadow: inset 100vw 100vh rgba(0, 0, 0, 0.5);
-  z-index: 2;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.navigation__navbar_active {
+.navbar_active {
   position: absolute;
   top: 0;
   right: 0;
@@ -43,7 +42,7 @@ nav {
     -webkit-animation: slide-out 0.5s forwards;
   }
 
-  .navigation__image_container {
+  .image_container {
     display: flex;
     justify-content: center;
   }
@@ -100,7 +99,7 @@ nav {
   }
 }
 
-.navigation__hamburger_button {
+.hamburger_button {
   position: relative;
   padding: 15px;
   display: flex;

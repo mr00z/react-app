@@ -3,6 +3,10 @@
 // Import a Google Font
 @import url('https://fonts.googleapis.com/css?family=Muli:400,700');
 @import url('https://fonts.googleapis.com/css?family=Philosopher:400,700');
+
+// import Line Awesome icons
+@import '../../node_modules/line-awesome/dist/line-awesome/css/line-awesome.min.css';
+
 @import './variables.scss';
 
 // Update Bulma's global variables
@@ -29,6 +33,12 @@ $footer-background-color: $jinn_bg;
 
 .radio:hover {
   color: inherit;
+}
+
+.pagination-previous,
+.pagination-next,
+.pagination-link {
+  background-color: #fff;
 }
 
 .app__container {

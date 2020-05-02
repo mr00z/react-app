@@ -1,14 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+import styles from './form.scss';
 
 const FormField = ({ label, children, textAlign }) => (
-  <div className="is-flex form__field">
+  <div className={styles.field}>
     <div
       className={clsx('field', {
         'has-text-left': textAlign === 'left',
         'has-text-centered': textAlign === 'center',
-        'has-text-right': textAlign === 'right'
+        'has-text-right': textAlign === 'right',
       })}
     >
       {/* eslint-disable-next-line max-len */}
@@ -25,5 +26,5 @@ export default FormField;
 FormField.propTypes = {
   label: PropTypes.string,
   children: PropTypes.node.isRequired,
-  textAlign: PropTypes.oneOf(['left', 'center', 'right'])
+  textAlign: PropTypes.oneOf(['left', 'center', 'right']),
 };

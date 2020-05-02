@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './form.scss';
 
 const Form = ({ onSubmit, children }) => (
   <form className="has-text-grey-lighter" onSubmit={onSubmit}>
@@ -10,7 +9,7 @@ const Form = ({ onSubmit, children }) => (
 
 Form.propTypes = {
   onSubmit: PropTypes.func,
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default Form;

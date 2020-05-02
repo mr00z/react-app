@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
 import { NavLink } from 'react-router-dom';
-import styles from './navigation.scss';
 import Menu from '../bulma/Menu';
 import HamburgerButton from './HamburgerButton';
 import Icon from '../Icon/Icon';
 import logo from '../../assets/logo.png';
+
+import styles from './navigation.scss';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(null);
@@ -14,16 +15,16 @@ const Navbar = () => {
 
   return (
     <>
-      {isOpen && <div className={styles.navigation__shadow} onClick={handleChangeNavbarState} />}
-      <nav role="navigation">
+      {isOpen && <div className={styles.shadow} onClick={handleChangeNavbarState} />}
+      <nav role="navigation" className={styles.navbar}>
         <HamburgerButton onClick={handleChangeNavbarState} isNavbarOpen={isOpen} />
         <div
-          className={clsx(styles.navigation__navbar_active, {
-            'slide-in': isOpen === true,
-            'slide-out': isOpen === false
+          className={clsx(styles.navbar_active, {
+            [styles['slide-in']]: isOpen === true,
+            [styles['slide-out']]: isOpen === false,
           })}
         >
-          <div className={styles.navigation__image_container}>
+          <div className={styles.image_container}>
             <img src={logo} alt="Logo" />
           </div>
           <Menu>

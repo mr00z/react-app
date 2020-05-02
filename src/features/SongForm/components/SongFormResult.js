@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './songForm.scss';
+import styles from '../songForm.scss';
 import YouTube from 'react-youtube';
 
 const SongFormResult = ({ song }) => {
@@ -9,7 +9,7 @@ const SongFormResult = ({ song }) => {
     <div
       data-testid="song-form-result"
       // eslint-disable-next-line max-len
-      className={`has-text-centered has-text-light is-size-5-mobile is-size-4-tablet is-size-3-desktop is-size-4-widescreen ${styles.songForm__result}`}
+      className={`has-text-centered has-text-light is-size-5-mobile is-size-4-tablet is-size-3-desktop is-size-4-widescreen ${styles.result}`}
     >
       {song?.title ? (
         <>
@@ -18,8 +18,8 @@ const SongFormResult = ({ song }) => {
           {song?.servicesData?.youtube?.responseData && (
             <YouTube
               videoId={song.servicesData.youtube.responseData.id.videoId}
-              containerClassName={styles.songForm__result_video_container}
-              className={styles.songForm__result_video}
+              containerClassName={styles.result_video_container}
+              className={styles.result_video}
             />
           )}
         </>
