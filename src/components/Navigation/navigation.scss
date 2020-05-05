@@ -45,7 +45,7 @@
   .image_container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: flex-start; /* Safari 'stretch bug' */
   }
 
   img {
