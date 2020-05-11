@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import styles from '../songsBank.scss';
 import SongsBankItemDetails from './SongsBankItemDetails';
 import OpenedItemDetailsContext from '../OpenedItemDetailsContext';
@@ -8,10 +9,11 @@ const SongsBankItem = ({ song }) => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [openedExists, setOpenedExists] = useContext(OpenedItemDetailsContext);
 
-  const imgSrc = song?.servicesData?.lastfm?.responseData.track.album.image[1]['#text'];
+  const track = song?.servicesData?.lastfm?.responseData?.track;
+  const imgSrc = track?.album.image[1]['#text'];
 
   const handleOpenDetails = () => {
-    if (openedExists) return;
+    if (openedExists || !track) return;
 
     setIsDetailsOpen(true);
     setOpenedExists(true);
@@ -24,7 +26,12 @@ const SongsBankItem = ({ song }) => {
   };
 
   return (
-    <div className={`box ${styles.item}`} onClick={handleOpenDetails}>
+    <div
+      className={clsx('box', styles.item, {
+        [styles.item_with_details]: track !== undefined,
+      })}
+      onClick={handleOpenDetails}
+    >
       {imgSrc && (
         <figure className="image is-64x64">
           <img src={imgSrc} alt="Album cover" />
