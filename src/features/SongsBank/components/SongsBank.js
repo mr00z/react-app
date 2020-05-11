@@ -5,6 +5,7 @@ import styles from '../songsBank.scss';
 import SearchInput from '../../../components/SearchInput/SearchInput';
 import Loader from '../../../components/Loader/Loader';
 import SongsBankItem from './SongsBankItem';
+import OpenedItemDetailsContext from '../OpenedItemDetailsContext';
 
 const SongsBank = () => {
   const initialParameters = { query: null, genres: null, moods: null, resultsPerPage: 12, page: 1 };
@@ -12,6 +13,8 @@ const SongsBank = () => {
   const [queryResult, setQueryResult] = useState(null);
   const [parameters, setParameters] = useState(initialParameters);
   const [isLoading, setIsLoading] = useState(false);
+
+  const openedItemHook = useState(false);
 
   const getSongs = async (queryParams) => {
     setIsLoading(true);
@@ -73,7 +76,9 @@ const SongsBank = () => {
           <div className="columns is-multiline is-variable is-6-tablet is-4-mobile">
             {songs.map((song, index) => (
               <div className="column is-one-quarter-desktop is-half-tablet" key={index}>
-                <SongsBankItem song={song} />
+                <OpenedItemDetailsContext.Provider value={openedItemHook}>
+                  <SongsBankItem song={song} />
+                </OpenedItemDetailsContext.Provider>
               </div>
             ))}
           </div>

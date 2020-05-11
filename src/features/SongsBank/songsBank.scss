@@ -52,12 +52,16 @@
 
   @include mobile {
     position: absolute;
-    top: -80%;
-    left: 5%;
-    right: 5%;
-    width: 90%;
+    top: -100%;
+    left: 2.5%;
+    right: 2.5%;
+    width: 95%;
     height: fit-content;
     animation: rotate-in-mobile 1s ease-in-out;
+  }
+
+  &_header_text {
+    flex-shrink: 6;
   }
 
   &_content {
