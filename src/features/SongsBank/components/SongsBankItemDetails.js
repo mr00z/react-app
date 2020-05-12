@@ -12,7 +12,7 @@ const SongsBankItemDetails = ({ song, onClose }) => {
         <a className={`delete ${styles.close_button}`} onClick={onClose}></a>
         <div className="is-flex">
           <figure>
-            <img src={lastfmData?.album.image[2]['#text']} alt="Album cover" />
+            <img src={lastfmData?.album?.image[2]['#text']} alt="Album cover" />
           </figure>
           <div className={styles.item_details_header_text}>
             <h2 className="title is-size-4-mobile">{song.title}</h2>

@@ -10,7 +10,7 @@ const SongsBankItem = ({ song }) => {
   const [openedExists, setOpenedExists] = useContext(OpenedItemDetailsContext);
 
   const track = song?.servicesData?.lastfm?.responseData?.track;
-  const imgSrc = track?.album.image[1]['#text'];
+  const imgSrc = track?.album?.image[1]['#text'];
 
   const handleOpenDetails = () => {
     if (openedExists || !track) return;
