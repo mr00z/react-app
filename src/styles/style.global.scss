@@ -31,14 +31,21 @@ $footer-background-color: $jinn_bg;
 @import '../../node_modules/bulma';
 @import '../../node_modules/bulma-switch/dist/css/bulma-switch.sass';
 
+// prevent radio button's text from color changing
 .radio:hover {
   color: inherit;
 }
 
+// override pagination background color
 .pagination-previous,
 .pagination-next,
 .pagination-link {
   background-color: #fff;
+}
+
+// reset color of a link inside a tag
+.tag > a {
+  color: inherit;
 }
 
 .app__container {
