@@ -9,7 +9,11 @@ const SongsBankItemDetails = ({ song, onClose }) => {
   return (
     <div className={styles.item_details}>
       <section className={styles.item_details_content}>
-        <a className={`delete ${styles.close_button}`} onClick={onClose}></a>
+        <a
+          data-testid="songs-bank-item-details-close"
+          className={`delete ${styles.close_button}`}
+          onClick={onClose}
+        ></a>
         <div className="is-flex">
           <figure>
             <img src={lastfmData?.album?.image[2]['#text']} alt="Album cover" />

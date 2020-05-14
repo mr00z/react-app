@@ -33,19 +33,27 @@ const mockSong = {
 };
 
 it('should render correctly', () => {
-  const { getByText, getByAltText } = render(<SongsBankItem song={mockSong} />);
+  const { queryByText, queryByAltText } = render(<SongsBankItem song={mockSong} />);
 
-  expect(getByText(mockSong.title)).toBeDefined();
-  expect(getByText(mockSong.author)).toBeDefined();
-  expect(getByAltText('Album cover')).toBeDefined();
+  expect(queryByText(mockSong.title)).toBeDefined();
+  expect(queryByText(mockSong.author)).toBeDefined();
+  expect(queryByAltText('Album cover')).toBeDefined();
 });
 
 it('should render details', () => {
-  const { getByText } = render(<SongsBankItem song={mockSong} />);
+  const { getByTestId, queryByText } = render(<SongsBankItem song={mockSong} />);
 
-  const item = getByText(mockSong.title);
+  const item = getByTestId('songs-bank-item');
 
   fireEvent.click(item);
 
-  expect(getByText(mockSong.servicesData.lastfm.responseData.track.album.title, { exact: false })).toBeDefined();
+  const albumTitle = mockSong.servicesData.lastfm.responseData.track.album.title;
+
+  expect(queryByText(albumTitle, { exact: false })).toBeDefined();
+
+  const closeButton = getByTestId('songs-bank-item-details-close');
+
+  fireEvent.click(closeButton);
+
+  expect(queryByText(albumTitle, { exact: false })).toBeNull();
 });

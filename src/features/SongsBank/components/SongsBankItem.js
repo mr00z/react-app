@@ -31,6 +31,7 @@ const SongsBankItem = ({ song }) => {
         [styles.item_with_details]: track !== undefined,
       })}
       onClick={handleOpenDetails}
+      data-testid="songs-bank-item"
     >
       {imgSrc && (
         <figure className="image is-64x64">
@@ -38,7 +39,7 @@ const SongsBankItem = ({ song }) => {
         </figure>
       )}
       <div className={`${styles.item_inner}`}>
-        <div className="has-text-weight-bold">{song.title}</div>
+        <strong>{song.title}</strong>
         <div>{song.author}</div>
       </div>
       {isDetailsOpen && <SongsBankItemDetails song={song} onClose={handleCloseDetails} />}
