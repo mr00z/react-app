@@ -49,6 +49,7 @@
   border-radius: 1rem;
   cursor: initial;
   animation: rotate-in 1s ease-in-out;
+  -webkit-animation: rotate-in 1s ease-in-out;
 
   @include mobile {
     position: absolute;
@@ -58,6 +59,7 @@
     width: 95%;
     height: fit-content;
     animation: rotate-in-mobile 1s ease-in-out;
+    -webkit-animation: rotate-in-mobile 1s ease-in-out;
   }
 
   &_header_text {
@@ -68,6 +70,7 @@
     padding: 1rem;
     opacity: 0;
     animation: fade-in 0.5s ease-in-out 1s forwards;
+    -webkit-animation: fade-in 0.5s ease-in-out 1s forwards;
 
     img {
       height: 128px;
@@ -95,6 +98,15 @@
   }
 }
 
+@-webkit-keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes rotate-in {
   from {
     height: 35vh;
@@ -108,7 +120,29 @@
   }
 }
 
+@-webkit-keyframes rotate-in {
+  from {
+    height: 35vh;
+    width: 35%;
+    transform: rotateY(0deg);
+  }
+  to {
+    height: 70vh;
+    width: 70%;
+    transform: rotateY(180deg);
+  }
+}
+
 @keyframes rotate-in-mobile {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+@-webkit-keyframes rotate-in-mobile {
   from {
     transform: rotateY(0deg);
   }
