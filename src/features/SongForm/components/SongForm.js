@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react';
 import FormField from '../../../components/Form/FormField';
 import SubmitButton from '../../../components/Form/SubmitButton';
@@ -117,7 +118,7 @@ const SongForm = () => {
           </SubmitButton>
         </FormField>
       </Form>
-      {songReady && <SongFormResult song={song} />}
+      {/* {songReady && <SongFormResult song={song} />} */}
     </>
   );
 };
