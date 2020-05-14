@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
 const path = require('path');
 const devMode = process.env.NODE_ENV !== 'production';
@@ -99,7 +98,6 @@ module.exports = {
       systemvars: true,
       silent: true,
     }),
-    new CopyPlugin([{ from: 'public/_redirects', to: './' }]),
   ],
   devServer: {
     contentBase: path.resolve(__dirname, 'public/assets'),
