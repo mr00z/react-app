@@ -7,7 +7,7 @@ import theme from '../theme';
 import styles from '../styles.scss';
 
 const AllGenresSelect = ({ placeholder, isMulti, onChange, name, className, ...otherProps }) => {
-  const allGenres = useSongsGenres();
+  const [allGenres, isLoading] = useSongsGenres();
   return (
     <Select
       theme={theme}
@@ -17,6 +17,7 @@ const AllGenresSelect = ({ placeholder, isMulti, onChange, name, className, ...o
       className={`${styles.custom_select} has-text-grey-dark ${className}`}
       isMulti={isMulti}
       onChange={onChange}
+      isLoading={isLoading}
       {...otherProps}
     />
   );

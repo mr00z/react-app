@@ -1,0 +1,19 @@
+{
+  "name": "Music Jinn",
+  "description": "Web application for drawing songs basing on your current mood",
+  "icons": [
+    {
+      "src": "/assets/genie-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/genie.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "splash_pages": null,
+  "background_color": "#034a4a",
+  "theme_color": "#e87967"
+}

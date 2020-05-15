@@ -3,19 +3,22 @@ import MusicJinnAPIConnector from '../../../integrations/MusicJinnAPIConnector';
 import SongsGenresQuery from './SongsGenresQuery';
 
 const useSongsGenres = () => {
-  const [moods, setMoods] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const getSongsMoods = async () => {
+  const getSongsGenres = async () => {
+    setIsLoading(true);
     const query = new SongsGenresQuery();
     const response = await MusicJinnAPIConnector.get(query.getQueryString());
-    setMoods(response);
+    setGenres(response);
+    setIsLoading(false);
   };
 
   useEffect(() => {
-    getSongsMoods();
+    getSongsGenres();
   }, []);
 
-  return moods;
+  return [genres, isLoading];
 };
 
 export default useSongsGenres;
