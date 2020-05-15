@@ -10,7 +10,7 @@ const useSongsMoods = () => {
     setIsLoading(true);
     const query = new SongsMoodsQuery();
     const response = await MusicJinnAPIConnector.get(query.getQueryString());
-    setMoods(response);
+    if (response) setMoods(response);
     setIsLoading(false);
   };
 

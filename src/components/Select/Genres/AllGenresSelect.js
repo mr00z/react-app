@@ -11,7 +11,7 @@ const AllGenresSelect = ({ placeholder, isMulti, onChange, name, className, ...o
   return (
     <Select
       theme={theme}
-      options={allGenres.map((element) => ({ value: element, label: element }))}
+      options={allGenres?.map((element) => ({ value: element, label: element }))}
       placeholder={placeholder}
       name={name}
       className={`${styles.custom_select} has-text-grey-dark ${className}`}
