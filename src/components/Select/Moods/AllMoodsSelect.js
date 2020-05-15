@@ -7,7 +7,7 @@ import theme from '../theme';
 import styles from '../styles.scss';
 
 const AllMoodsSelect = ({ placeholder, isMulti, onChange, name, className, ...otherProps }) => {
-  const allMoods = useSongsMoods();
+  const [allMoods, isLoading] = useSongsMoods();
   return (
     <Select
       theme={theme}
@@ -17,6 +17,7 @@ const AllMoodsSelect = ({ placeholder, isMulti, onChange, name, className, ...ot
       className={`${styles.custom_select} has-text-grey-dark ${className}`}
       isMulti={isMulti}
       onChange={onChange}
+      isLoading={isLoading}
       {...otherProps}
     />
   );
