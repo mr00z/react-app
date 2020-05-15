@@ -99,7 +99,11 @@ module.exports = {
       systemvars: true,
       silent: true,
     }),
-    new CopyPlugin([{ from: 'public/_redirects', to: './' }]),
+    new CopyPlugin([
+      { from: 'public/_redirects', to: './' },
+      { from: 'public/manifest.json', to: './' },
+      { from: 'src/assets/genie-192.png', to: './assets/' },
+    ]),
   ],
   devServer: {
     contentBase: path.resolve(__dirname, 'public/assets'),
