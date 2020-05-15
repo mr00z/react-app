@@ -11,7 +11,7 @@ const AllMoodsSelect = ({ placeholder, isMulti, onChange, name, className, ...ot
   return (
     <Select
       theme={theme}
-      options={allMoods.map((element) => ({ value: element, label: element }))}
+      options={allMoods?.map((element) => ({ value: element, label: element }))}
       placeholder={placeholder}
       name={name}
       className={`${styles.custom_select} has-text-grey-dark ${className}`}
