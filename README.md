@@ -1,3 +1,5 @@
-# music-jinn
+# Music Jinn :headphones: :sparkles:
 
-React application for drawing songs based on parameters specified by user. :)
+Web application for drawing songs basing on your current mood.
+
+Developed using React, Sass and Bulma CSS Framework. 
