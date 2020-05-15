@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <div className={styles.container}>
       <div className={`${styles.container} ${styles.logo}`} onClick={() => history.push('/')}>
-        <img src={genie} className={styles.img} />
+        <img src={genie} className={styles.img} alt="Logo icon" />
         <div className={`has-text-centered ${styles.text}`}>Music Jinn</div>
       </div>
     </div>
