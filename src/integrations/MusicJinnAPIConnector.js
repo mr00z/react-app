@@ -5,6 +5,7 @@ class MusicJinnAPIConnector {
     return fetch(`${this.endpoint}/${requestUrl}`, {
       headers: {
         'X-Api-Key': process.env.MUSIC_JINN_API_KEY,
+        'Access-Control-Allow-Origin': process.env.MUSIC_JINN_URL,
       },
     }).then((response) => {
       if (response.status === 204) return null;
