@@ -30,6 +30,7 @@ $footer-background-color: $jinn_bg;
 // Import only what you need from Bulma
 @import '../../node_modules/bulma';
 @import '../../node_modules/bulma-switch/dist/css/bulma-switch.sass';
+@import '../../node_modules/bulma-checkradio/dist/css/bulma-checkradio.sass';
 
 // prevent radio button's text from color changing
 .radio:hover {

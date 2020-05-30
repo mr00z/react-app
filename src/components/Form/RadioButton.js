@@ -2,18 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const RadioButton = ({ name, label, value, onChange, defaultChecked }) => {
+  const id = `${name}-${label}`;
   return (
     <>
-      <label className="radio">
-        <input
-          type="radio"
-          name={name}
-          value={value}
-          onChange={onChange}
-          defaultChecked={defaultChecked}
-        />
-        {label}
-      </label>
+      <input
+        id={id}
+        className="is-checkradio"
+        type="radio"
+        name={name}
+        value={value}
+        onChange={onChange}
+        defaultChecked={defaultChecked}
+      />
+      <label htmlFor={id}>{label}</label>
     </>
   );
 };
@@ -25,5 +26,5 @@ RadioButton.propTypes = {
   label: PropTypes.string.isRequired,
   value: PropTypes.any,
   onChange: PropTypes.func,
-  defaultChecked: PropTypes.oneOfType([PropTypes.bool, PropTypes.string])
+  defaultChecked: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
 };
