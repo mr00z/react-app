@@ -19,6 +19,9 @@ const Footer = () => {
           <a href="https://www.namecheap.com/logo-maker">Namecheap&apos;s logo maker</a>. Font icons provided by{' '}
           <a href="https://icons8.com/line-awesome">Line Awesome</a>.
         </p>
+        <p>
+          Songs/moods matching data scraped from <a href="https://www.allmusic.com">allmusic.com</a>.
+        </p>
       </div>
     </footer>
   );
