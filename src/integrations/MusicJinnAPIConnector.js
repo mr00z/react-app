@@ -6,11 +6,17 @@ class MusicJinnAPIConnector {
       headers: {
         'X-Api-Key': process.env.MUSIC_JINN_API_KEY,
       },
-    }).then((response) => {
-      if (response.status === 204) return null;
+    })
+      .then((response) => {
+        if (response.status === 204) return null;
 
-      return response.json();
-    });
+        return response.json();
+      })
+      .catch((error) => {
+        return {
+          error,
+        };
+      });
   }
 }
 
