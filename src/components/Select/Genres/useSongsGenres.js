@@ -10,7 +10,7 @@ const useSongsGenres = () => {
     setIsLoading(true);
     const query = new SongsGenresQuery();
     const response = await MusicJinnAPIConnector.get(query.getQueryString());
-    if (!response.error) setGenres(response);
+    if (!response?.error) setGenres(response);
     setIsLoading(false);
   };
 

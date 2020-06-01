@@ -63,7 +63,7 @@ const SongForm = () => {
 
     const response = await MusicJinnAPIConnector.get(getSongs.getQueryString());
 
-    if (!response.error) setSong(response);
+    if (!response?.error) setSong(response);
 
     setIsLoading(false);
     setSongReady(true);
